@@ -10,6 +10,14 @@
   --hue-correct: 145;
 }
 
+body.correct {
+  background-color: forestgreen;
+}
+
+body.wrong {
+  --hue: var(--hue-wrong);
+}
+
 body {
   --hue: var(--hue-neutral);
   padding: 0;

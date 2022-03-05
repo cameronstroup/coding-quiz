@@ -9,17 +9,22 @@ var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
-var answerIndex;
+questionCounter = 0;
+currentScore = 0;
 
-var buttoninput = document.getElementById("calcButton");
+var buttoninput = document.getElementsByClassName("calcButton");
 for (var i = 0; i < buttoninput.length; i++) {
   buttoninput[i].addEventListener("click", btnPress);
 }
 function btnPress(ev) {
-  console.log(buttoninput);
-}
+  console.log(ev.target.innerText, questionCounter);
 
-questionCounter = 0;
+  if (ev.target.innerText == correctAnswer[questionCounter]) {
+    console.log("hello");
+    currentScore++;
+    console.log(currentScore);
+  }
+}
 
 function startGame() {
   beginButton.classList.add("hide");
@@ -29,7 +34,7 @@ function startGame() {
 }
 
 function nextQuestion() {
-  questionElement.innerText = questions[0].question;
+  questionElement.innerText = questions[questionCounter].question;
   buttons = [buttonA, buttonB, buttonC, buttonD];
 
   for (i = 0; i < questions.length; i++) {
@@ -88,4 +93,11 @@ var questions = [
       },
     ],
   },
+];
+var correctAnswer = [
+  "",
+  "Brendan Eich",
+  "Complete Webpage Interface",
+  "Fucntion",
+  "It is extremly easy to understand and does not need much practice ",
 ];
