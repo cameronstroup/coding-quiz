@@ -9,6 +9,16 @@ var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
+var answerIndex;
+
+var buttoninput = document.getElementById("calcButton");
+for (var i = 0; i < buttoninput.length; i++) {
+  buttoninput[i].addEventListener("click", btnPress);
+}
+function btnPress(ev) {
+  console.log(buttoninput);
+}
+
 questionCounter = 0;
 
 function startGame() {
@@ -16,17 +26,6 @@ function startGame() {
   question.classList.remove("hide");
   next.classList.remove("hide");
   nextQuestion();
-  setTime();
-  console.log(questionElement);
-}
-function setTime() {
-  var timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft;
-    if (secondsLeft < 1) {
-      endGameScreen();
-    }
-  }, 2000);
 }
 
 function nextQuestion() {
