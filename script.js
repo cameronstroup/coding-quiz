@@ -5,13 +5,25 @@ var next = document.getElementById("next-btn");
 next.addEventListener("click", nextQuestion);
 var questionElement = document.getElementById("questions");
 var answerbtn = document.getElementById("answer-container");
+var gameScore = document.getElementById("score");
 var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
 questionCounter = 0;
 currentScore = 0;
-
+gameScore.innerText = currentScore;
+var count = 15;
+var interval = setInterval(function () {
+  document.getElementById("count").innerHTML = count;
+  count--;
+  if (count === 0) {
+    clearInterval(interval);
+    document.getElementById("count").innerHTML = "Done";
+    // or...
+    alert("You're out of time!");
+  }
+}, 1000);
 var buttoninput = document.getElementsByClassName("calcButton");
 for (var i = 0; i < buttoninput.length; i++) {
   buttoninput[i].addEventListener("click", btnPress);
@@ -24,6 +36,16 @@ function btnPress(ev) {
     currentScore++;
     console.log(currentScore);
   }
+}
+
+function setTime() {
+  var timerInterval = setInterval(function () {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft;
+    if (secondsLeft < 1) {
+      endGameScreen();
+    }
+  }, 2000);
 }
 
 function startGame() {
