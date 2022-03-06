@@ -6,6 +6,9 @@ next.addEventListener("click", nextQuestion);
 var questionElement = document.getElementById("questions");
 var answerbtn = document.getElementById("answer-container");
 var gameScore = document.getElementById("score");
+var timeLeft = document.getElementById("time-left");
+var countI = document.getElementById("count");
+var scoreTitle = document.getElementById("Score title");
 var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
@@ -51,7 +54,11 @@ function setTime() {
 function startGame() {
   beginButton.classList.add("hide");
   question.classList.remove("hide");
+  gameScore.classList.remove("hide");
   next.classList.remove("hide");
+  timeLeft.classList.remove("hide");
+  countI.classList.remove("hide");
+  scoreTitle.classList.remove("hide");
   nextQuestion();
 }
 
