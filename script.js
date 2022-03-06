@@ -13,6 +13,7 @@ var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
+var buttoninput = document.getElementsByClassName("calcButton");
 questionCounter = 0;
 currentScore = 0;
 gameScore.innerText = currentScore;
@@ -27,7 +28,7 @@ var interval = setInterval(function () {
     alert("You're out of time!");
   }
 }, 1000);
-var buttoninput = document.getElementsByClassName("calcButton");
+
 for (var i = 0; i < buttoninput.length; i++) {
   buttoninput[i].addEventListener("click", btnPress);
 }
@@ -38,6 +39,10 @@ function btnPress(ev) {
     console.log("hello");
     currentScore++;
     console.log(currentScore);
+    gameScore.innerText = currentScore;
+    nextQuestion();
+  } else {
+    nextQuestion();
   }
 }
 
