@@ -9,16 +9,15 @@ https://cameronstroup.github.io/coding-quiz/
 
 ## Timer
 
-Once the game is started (after you push the start button) you have 40 seconds to complete the quiz. If you answer a question wrong, you get penalized and 10 seconds are subtracted from your timer.
-
+You start with 60 seconds and will have a chance to answer four questions. It is best to move to the next question if you do not know the answer because you will be deducted points for missed answers
 ## Quiz
 
-The actual quiz questions are wrapped in a <div> element and each choice or response is a button. The quiz is only available while the timer is counting down. 
+Once you hit the start button there is no going back!
   
  ## End Game Screen
  
-You reach this screen by either running out of time or clicking submit after you finish the last question. It shows the player their score and lets them log in their name and score. The highscore shows past highscores.
+You reach this screen by either running out of time or clicking submit after you finish the last question.
 
 ## Highscores
 
-I could not get back information from the local storage. I was able to save 
+This was a fun project and I leared a lot! Unfortunately I was not able to finish the save highscore page due to time constraints 
