@@ -17,11 +17,11 @@ var buttoninput = document.getElementsByClassName("calcButton");
 questionCounter = 0;
 currentScore = 0;
 gameScore.innerText = currentScore;
-var count = 15;
+var count = 30;
 var interval = setInterval(function () {
   document.getElementById("count").innerHTML = count;
   count--;
-  if (count === 0) {
+  if (count <= 0) {
     clearInterval(interval);
     document.getElementById("count").innerHTML = "Done";
     // or...
@@ -42,6 +42,10 @@ function btnPress(ev) {
     gameScore.innerText = currentScore;
     nextQuestion();
   } else {
+    currentScore--;
+    gameScore.innerText = currentScore;
+    count = count - 10;
+    document.getElementById("count").innerHTML = count;
     nextQuestion();
   }
 }

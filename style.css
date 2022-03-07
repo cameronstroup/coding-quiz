@@ -115,7 +115,9 @@ h1 a {
 }
 
 .bottom {
-  color: green;
+  color: antiquewhite;
+  font-family: "Aclonica";
+  font-size: 22px;
 }
 
 #questions {
