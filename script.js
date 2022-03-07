@@ -36,7 +36,7 @@ var interval = setInterval(function () {
 for (var i = 0; i < buttoninput.length; i++) {
   buttoninput[i].addEventListener("click", btnPress);
 }
-
+// how i capute the data from the user
 function btnPress(ev) {
   console.log(ev.target);
 
@@ -97,36 +97,6 @@ function endGameScreen() {
   countI.classList.add("hide");
   scoreTitle.innerText = "Final Score";
   highScorebtn.classList.remove("hide");
-
-  const saveHighscore = function () {
-    const initialsInput = initialsEl.value.trim();
-
-    // make sure input wasn't empty
-    if (initials !== "") {
-      const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-
-      // create new score object for current user
-      const newScore = {
-        score: time,
-        initials: initialsInput,
-      };
-
-      // save to local storage
-      highscores.push(newScore);
-      localStorage.setItem("highscores", JSON.stringify(highscores));
-
-      // redirect to highscores.html
-      window.location.href = "highscores.html";
-    }
-  };
-
-  // Saves high score when initials are input and user clicks ENTER
-  function checkForEnter(event) {
-    // "13" represents the enter key
-    if (event.key === "Enter") {
-      saveHighscore();
-    }
-  }
 }
 
 var questions = [
@@ -149,7 +119,7 @@ var questions = [
     ],
   },
   {
-    question: "Which is not a daya types supported by JavaScript?",
+    question: "Which is not a data types supported by JavaScript?",
     answers: [
       { text: "Boolean", correct: false },
       { text: "String", correct: false },

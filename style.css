@@ -1,21 +1,7 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  font-family: Gotham Rounded;
-}
 :root {
   --hue-neutral: 200;
   --hue-wrong: 0;
   --hue-correct: 145;
-}
-
-body.correct {
-  background-color: forestgreen;
-}
-
-body.wrong {
-  --hue: var(--hue-wrong);
 }
 
 body {
@@ -55,20 +41,6 @@ body {
   height: 100%;
   font-size: 1rem;
 }
-
-.btn:hover {
-  border-color: black;
-}
-
-.btn.correct {
-  background-color: green;
-  color: rgb(12, 1, 1);
-}
-
-.btn.wrong {
-  background-color: red;
-}
-
 .begin-btn {
   font-size: 1.5rem;
   font-weight: bold;
