@@ -13,14 +13,21 @@ var buttonA = document.getElementById("a");
 var buttonB = document.getElementById("b");
 var buttonC = document.getElementById("c");
 var buttonD = document.getElementById("d");
+var highScorebtn = document.getElementById("highScore");
 var buttoninput = document.getElementsByClassName("calcButton");
+highScorebtn.addEventListener("click", function () {
+  location.href = "highscores.html";
+});
 questionCounter = 0;
 currentScore = 0;
 gameScore.innerText = currentScore;
-var count = 100;
+
+var count = 60;
 var interval = setInterval(function () {
   document.getElementById("count").innerHTML = count;
   count--;
+
+  // put count at -2 because there is a two second delay will fix later
   if (count <= -2) {
     endGameScreen();
   }
@@ -29,6 +36,7 @@ var interval = setInterval(function () {
 for (var i = 0; i < buttoninput.length; i++) {
   buttoninput[i].addEventListener("click", btnPress);
 }
+
 function btnPress(ev) {
   console.log(ev.target);
 
@@ -56,6 +64,7 @@ function setTime() {
 
 function startGame() {
   beginButton.classList.add("hide");
+  highScorebtn.classList.add("hide");
   question.classList.remove("hide");
   gameScore.classList.remove("hide");
   next.classList.remove("hide");
@@ -74,6 +83,7 @@ function nextQuestion() {
   }
 
   questionCounter++;
+  // This must be changed if we add more question, count need to be one less then amount of questions
   if (questionCounter === 5) {
     endGameScreen();
   }
@@ -85,6 +95,38 @@ function endGameScreen() {
   next.classList.add("hide");
   timeLeft.classList.add("hide");
   countI.classList.add("hide");
+  scoreTitle.innerText = "Final Score";
+  highScorebtn.classList.remove("hide");
+
+  const saveHighscore = function () {
+    const initialsInput = initialsEl.value.trim();
+
+    // make sure input wasn't empty
+    if (initials !== "") {
+      const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+      // create new score object for current user
+      const newScore = {
+        score: time,
+        initials: initialsInput,
+      };
+
+      // save to local storage
+      highscores.push(newScore);
+      localStorage.setItem("highscores", JSON.stringify(highscores));
+
+      // redirect to highscores.html
+      window.location.href = "highscores.html";
+    }
+  };
+
+  // Saves high score when initials are input and user clicks ENTER
+  function checkForEnter(event) {
+    // "13" represents the enter key
+    if (event.key === "Enter") {
+      saveHighscore();
+    }
+  }
 }
 
 var questions = [
