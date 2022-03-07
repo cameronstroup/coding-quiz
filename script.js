@@ -17,15 +17,12 @@ var buttoninput = document.getElementsByClassName("calcButton");
 questionCounter = 0;
 currentScore = 0;
 gameScore.innerText = currentScore;
-var count = 30;
+var count = 100;
 var interval = setInterval(function () {
   document.getElementById("count").innerHTML = count;
   count--;
   if (count <= 0) {
-    clearInterval(interval);
-    document.getElementById("count").innerHTML = "Done";
-    // or...
-    alert("You're out of time!");
+    endGameScreen();
   }
 }, 1000);
 
@@ -33,10 +30,10 @@ for (var i = 0; i < buttoninput.length; i++) {
   buttoninput[i].addEventListener("click", btnPress);
 }
 function btnPress(ev) {
-  console.log(ev.target.innerText, questionCounter);
+  console.log(ev.target);
 
   if (ev.target.innerText == correctAnswer[questionCounter]) {
-    console.log("hello");
+    console.log(ev.target);
     currentScore++;
     console.log(currentScore);
     gameScore.innerText = currentScore;
@@ -53,11 +50,8 @@ function btnPress(ev) {
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEl.textContent = secondsLeft;
-    if (secondsLeft < 1) {
-      endGameScreen();
-    }
-  }, 2000);
+    timeLeft = secondsLeft;
+  }, 1000);
 }
 
 function startGame() {
@@ -78,8 +72,21 @@ function nextQuestion() {
   for (i = 0; i < questions.length; i++) {
     buttons[i].innerText = questions[questionCounter].answers[i].text;
   }
-
+  if (questionCounter === questions.length) {
+    console.log("Cameron did it");
+    endGameScreen();
+  }
   questionCounter++;
+  console.log(questionCounter);
+}
+function endGameScreen() {
+  beginButton.classList.add("hide");
+  question.classList.add("hide");
+  gameScore.classList.add("hide");
+  next.classList.add("hide");
+  timeLeft.classList.add("hide");
+  countI.classList.add("hide");
+  scoreTitle.classList.add("hide");
 }
 
 var questions = [
@@ -107,7 +114,7 @@ var questions = [
       { text: "Boolean", correct: false },
       { text: "String", correct: false },
       { text: "Object", correct: false },
-      { text: "Fucntion", correct: true },
+      { text: "Function", correct: true },
     ],
   },
   {
@@ -126,7 +133,7 @@ var questions = [
         correct: false,
       },
       {
-        text: "It is extremly easy to understand and does not need much practice ",
+        text: "It is extremly easy to understand and does not need much practice",
         correct: true,
       },
     ],
@@ -136,6 +143,6 @@ var correctAnswer = [
   "",
   "Brendan Eich",
   "Complete Webpage Interface",
-  "Fucntion",
-  "It is extremly easy to understand and does not need much practice ",
+  "Function",
+  "It is extremly easy to understand and does not need much practice",
 ];
