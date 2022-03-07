@@ -21,7 +21,7 @@ var count = 100;
 var interval = setInterval(function () {
   document.getElementById("count").innerHTML = count;
   count--;
-  if (count <= 0) {
+  if (count <= -2) {
     endGameScreen();
   }
 }, 1000);
@@ -69,24 +69,22 @@ function nextQuestion() {
   questionElement.innerText = questions[questionCounter].question;
   buttons = [buttonA, buttonB, buttonC, buttonD];
 
-  for (i = 0; i < questions.length; i++) {
+  for (i = 0; i < 4; i++) {
     buttons[i].innerText = questions[questionCounter].answers[i].text;
   }
-  if (questionCounter === questions.length) {
-    console.log("Cameron did it");
+
+  questionCounter++;
+  if (questionCounter === 5) {
     endGameScreen();
   }
-  questionCounter++;
   console.log(questionCounter);
 }
 function endGameScreen() {
   beginButton.classList.add("hide");
   question.classList.add("hide");
-  gameScore.classList.add("hide");
   next.classList.add("hide");
   timeLeft.classList.add("hide");
   countI.classList.add("hide");
-  scoreTitle.classList.add("hide");
 }
 
 var questions = [
@@ -138,6 +136,29 @@ var questions = [
       },
     ],
   },
+
+  // this line question will not be Read, this is a temp fix for a bug
+  {
+    question: "Which is not a feature of Javascirpt?",
+    answers: [
+      {
+        text: "It is a lightweight, interpreted programming language.",
+        correct: false,
+      },
+      {
+        text: "It is designed for creating network-centric applications.",
+        correct: false,
+      },
+      {
+        text: "It is complementary to and integrated with Java",
+        correct: false,
+      },
+      {
+        text: "It is extremly easy to understand and does not need much practice",
+        correct: true,
+      },
+    ],
+  },
 ];
 var correctAnswer = [
   "",
@@ -145,4 +166,6 @@ var correctAnswer = [
   "Complete Webpage Interface",
   "Function",
   "It is extremly easy to understand and does not need much practice",
+  // this last item is for a bug
+  "this is a bug",
 ];
